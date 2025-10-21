@@ -1,9 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { navButtons, navLinks } from "@/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navButtons, navLinks } from "./nav-menu";
 import { useEffect } from "react";
 
 type Props = {
@@ -53,11 +53,7 @@ export default function MobileNav({ showNav, closeNav }: Props) {
       >
         {/* Header: logo + close button */}
         <div className="flex items-center justify-between px-6 pt-6">
-          <Link
-            href="/"
-            className="flex items-center gap-2"
-            onClick={closeNav}
-          >
+          <Link href="/" className="flex items-center gap-2" onClick={closeNav}>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
               <span className="text-blue-500 text-lg font-bold">E</span>
             </div>
@@ -107,7 +103,12 @@ export default function MobileNav({ showNav, closeNav }: Props) {
         {/* Footer buttons */}
         <div className="w-full flex  items-center gap-4 px-8 pb-10">
           {navButtons.map((btn) => (
-            <Link className="w-full" key={btn.href} href={btn.href} onClick={closeNav}>
+            <Link
+              className="w-full"
+              key={btn.href}
+              href={btn.href}
+              onClick={closeNav}
+            >
               <Button
                 variant={btn.variant || "default"}
                 size={btn.size || "sm"}
