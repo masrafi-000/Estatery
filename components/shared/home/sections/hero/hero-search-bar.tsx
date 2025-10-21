@@ -58,12 +58,15 @@ export const HeroSearchBar: React.FC = () => {
           return (
             <Select key={config.key}>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Theme" />
+                <Icon className="size-5 mr-2" />
+                <SelectValue placeholder={config.placeholder} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                {config.items.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           );

@@ -4,8 +4,6 @@ export interface NavLink {
   href: string;
 }
 
-
-
 export interface NavButton {
   label: string;
   href: string;

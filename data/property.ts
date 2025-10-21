@@ -3,7 +3,7 @@ import { FilterSelectConfig } from "@/types";
 import { Bath, Bed, DollarSign, Home } from "lucide-react";
 
 export const selectConfig: FilterSelectConfig<PropertyFilters>[] = [
-   {
+  {
     key: "propertyType",
     icon: Home,
     placeholder: "Property Type",
@@ -34,7 +34,7 @@ export const selectConfig: FilterSelectConfig<PropertyFilters>[] = [
     onValueChange: (value) => ({ priceMax: parseInt(value) }),
     value: (filters) => filters.priceMax?.toString(),
   },
-   {
+  {
     key: "bedrooms",
     icon: Bed,
     placeholder: "Bedrooms",
@@ -49,7 +49,7 @@ export const selectConfig: FilterSelectConfig<PropertyFilters>[] = [
     onValueChange: (value) => ({ bedrooms: parseInt(value) }),
     value: (filters) => filters.bedrooms?.toString(),
   },
-    {
+  {
     key: "bathrooms",
     icon: Bath,
     placeholder: "Bathrooms",
@@ -63,4 +63,4 @@ export const selectConfig: FilterSelectConfig<PropertyFilters>[] = [
     onValueChange: (value) => ({ bathrooms: parseInt(value) }),
     value: (filters) => filters.bathrooms?.toString(),
   },
-]
+];
