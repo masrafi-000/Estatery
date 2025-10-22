@@ -1,4 +1,4 @@
-import { footerSections, socialLinks } from "@/data/footer";
+import { footerSections, socialLinks } from "@/data";
 import Link from "next/link";
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
           <div className="space-y-4 flex-1">
             <Link href="/" className="flex items-center gap-2">
               <div className="flex h-10 w-10 justify-center items-center rounded-lg bg-primary">
-                <span className="text-blue-500 text-lg font-bold">ZE</span>
+                <span className="text-blue-500 text-lg font-bold">E</span>
               </div>
               <span className="text-xl font-semibold">Estatery</span>
             </Link>

@@ -72,7 +72,7 @@ export const HeroSearchBar: React.FC = () => {
 						value={localSearch}
 						onChange={e => setLocalSearch(e.target.value)}
 						onKeyDown={handleKeyDown}
-						className='pl-10'
+						className='pl-10 text-accent-foreground'
 					/>
 				</div>
 				<Button

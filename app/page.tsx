@@ -10,7 +10,6 @@ export default function page() {
       <FeaturedProperties />
       <BenefitsSection />
       <TestimonialsSection />
-      <Footer />
     </>
   );
 }
