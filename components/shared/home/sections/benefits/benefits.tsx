@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { benefits } from "@/data";
 
@@ -7,7 +9,7 @@ const BenefitsSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-            Why Choose ZettaEstate
+            Why Choose Estatery
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             We provide everything you need to find, buy, or rent your perfect

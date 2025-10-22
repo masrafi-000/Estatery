@@ -12,7 +12,7 @@ export function Footer() {
               <div className="flex h-10 w-10 justify-center items-center rounded-lg bg-primary">
                 <span className="text-blue-500 text-lg font-bold">ZE</span>
               </div>
-              <span className="text-xl font-semibold">ZettaEstate</span>
+              <span className="text-xl font-semibold">Estatery</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Find your dream home with the most comprehensive real estate
@@ -48,18 +48,19 @@ export function Footer() {
             © 2025 Estatery. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            {socialLinks.map((social) => 
-              {
-              const Icon = social.icon
-              return <Link
-                key={social.label}
-                href={social.href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Icon className="size-5" />
-                <span className="sr-only">{social.label}</span>
-              </Link>}
-        )}
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <Link
+                  key={social.label}
+                  href={social.href}
+                  className="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Icon className="size-5" />
+                  <span className="sr-only">{social.label}</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

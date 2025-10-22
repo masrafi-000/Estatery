@@ -52,12 +52,12 @@ export const HeroSearchBar: React.FC = () => {
       </div>
 
       {/* Advance Filters */}
-      <div className="grid gap-3 md:grid-cols-4">
+      <div className="grid gap-3 md:grid-cols-4 items-center">
         {selectConfig.map((config) => {
           const Icon = config.icon;
           return (
-            <Select key={config.key}>
-              <SelectTrigger className="w-[180px]">
+            <Select key={config.key} >
+              <SelectTrigger className="w-full">
                 <Icon className="size-5 mr-2" />
                 <SelectValue placeholder={config.placeholder} />
               </SelectTrigger>

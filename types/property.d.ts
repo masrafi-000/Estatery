@@ -12,3 +12,31 @@ export interface PropertyStats {
   value: string;
   icon: React.ElementType;
 }
+
+
+export interface Property {
+  id: string
+  title: string
+  description: string
+  price: number
+  address: string
+  city: string
+  state: string
+  zipCode: string
+  propertyType: "house" | "apartment" | "condo" | "townhouse" | "land"
+  listingType: "buy" | "rent" | "sold"
+  bedrooms: number
+  bathrooms: number
+  area: number
+  images: string[]
+  amenities: string[]
+  yearBuilt: number
+  agent: {
+    name: string
+    email: string
+    phone: string
+    image: string
+  }
+  featured: boolean
+  createdAt: string
+}
