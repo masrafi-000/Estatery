@@ -1,5 +1,5 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function PropertyCardSkeleton() {
   return (
@@ -19,5 +19,5 @@ export function PropertyCardSkeleton() {
         <Skeleton className="h-10 w-full" />
       </CardFooter>
     </Card>
-  )
+  );
 }

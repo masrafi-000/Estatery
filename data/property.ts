@@ -18,7 +18,7 @@ export const selectConfig: FilterSelectConfig<PropertyFilters>[] = [
     onValueChange: (value) => ({
       propertyType: value.toLowerCase() as PropertyFilters["propertyType"],
     }),
-    value: (filters) => filters.propertyType,
+	value: (filters) => filters.propertyType.charAt(0).toUpperCase() + filters.propertyType.slice(1),
   },
   {
     key: "priceMax",
