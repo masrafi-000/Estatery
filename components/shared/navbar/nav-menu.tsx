@@ -64,7 +64,7 @@ const NavMenu = ({ openNav }: Props) => {
         {/* Right Section */}
         <div className=" flex items-center justify-center gap-2 md:gap-4">
           {navButtons.map((btn) => (
-            <Link key={btn.href} href={btn.href}>
+            <Link key={btn.label} href={btn.href}>
               <Button
                 variant={btn.variant || "default"}
                 size={btn.size || "sm"}

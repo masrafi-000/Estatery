@@ -12,6 +12,6 @@ export const navLinks: NavLink[] = [
 
 // Action Buttons
 export const navButtons: NavButton[] = [
-  { label: "Login", href: "/login", variant: "outline", size: "sm" },
-  { label: "Sign Up", href: "/signup", size: "sm", variant: "default" },
+  { label: "Login", href: "/auth/login", variant: "outline", size: "sm" },
+  { label: "Sign Up", href: "/auth/signup", size: "sm", variant: "default" },
 ];
