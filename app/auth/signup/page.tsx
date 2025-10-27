@@ -14,7 +14,7 @@ export default function SignupPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <h1 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">
-              ZettaEstate
+              Estatery
             </h1>
           </Link>
           <p className="mt-2 text-gray-600 dark:text-gray-400">

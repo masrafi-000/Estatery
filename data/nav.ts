@@ -7,7 +7,7 @@ export const navLinks: NavLink[] = [
   { id: 2, label: "Services", href: "/services" },
   { id: 3, label: "Contact", href: "/contact" },
   { id: 4, label: "Blog", href: "/blog" },
-  { id: 5, label: "Articles", href: "/articles" },
+  { id: 5, label: "News", href: "/news" },
 ];
 
 // Action Buttons
