@@ -1,15 +1,14 @@
-import type { Metadata } from "next"
-import ResetPasswordForm from "@/components/shared/auth/reset-password-form"
+"use client";
 
-export const metadata: Metadata = {
-  title: "Reset Password | Estatery",
-  description: "Create a new password",
-}
+import ResetPasswordForm from "@/components/shared/auth/reset-password-form";
+import { Suspense } from "react";
 
 export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-linear-to-br from-background via-background to-primary/5">
-      <ResetPasswordForm />
+      <Suspense fallback={<div>loading...</div>}>
+        <ResetPasswordForm />
+      </Suspense>
     </div>
-  )
+  );
 }

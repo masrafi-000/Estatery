@@ -1,13 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, Calendar, User } from "lucide-react"
+import { ArrowRight, Calendar, User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const blogPosts = [
   {
     id: 1,
     title: "10 Tips for First-Time Home Buyers",
-    excerpt: "Learn the essential steps and strategies to make your first home purchase a success.",
+    excerpt:
+      "Learn the essential steps and strategies to make your first home purchase a success.",
     image: "/blog-1.jpg",
     category: "Buying",
     author: "Sarah Johnson",
@@ -17,7 +19,8 @@ const blogPosts = [
   {
     id: 2,
     title: "The Future of Real Estate Technology",
-    excerpt: "Explore how AI and automation are transforming the real estate industry.",
+    excerpt:
+      "Explore how AI and automation are transforming the real estate industry.",
     image: "/blog-2.jpg",
     category: "Technology",
     author: "Michael Chen",
@@ -27,7 +30,8 @@ const blogPosts = [
   {
     id: 3,
     title: "Investment Properties: A Beginner's Guide",
-    excerpt: "Understand the fundamentals of real estate investing and build your portfolio.",
+    excerpt:
+      "Understand the fundamentals of real estate investing and build your portfolio.",
     image: "/blog-3.jpg",
     category: "Investment",
     author: "Emma Davis",
@@ -37,7 +41,8 @@ const blogPosts = [
   {
     id: 4,
     title: "Home Staging: Maximize Your Property's Appeal",
-    excerpt: "Professional tips to prepare your home for sale and attract buyers.",
+    excerpt:
+      "Professional tips to prepare your home for sale and attract buyers.",
     image: "/blog-1.jpg",
     category: "Selling",
     author: "James Wilson",
@@ -47,7 +52,8 @@ const blogPosts = [
   {
     id: 5,
     title: "Market Trends: What to Expect in 2024",
-    excerpt: "Analysis of current market conditions and predictions for the coming year.",
+    excerpt:
+      "Analysis of current market conditions and predictions for the coming year.",
     image: "/blog-2.jpg",
     category: "Market",
     author: "Lisa Anderson",
@@ -64,7 +70,7 @@ const blogPosts = [
     date: "Mar 1, 2024",
     readTime: "7 min read",
   },
-]
+];
 
 export function BlogGrid() {
   return (
@@ -77,7 +83,8 @@ export function BlogGrid() {
           >
             {/* Image */}
             <div className="relative h-48 overflow-hidden bg-muted">
-              <img
+              <Image
+                fill
                 src={post.image || "/placeholder.svg"}
                 alt={post.title}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -93,7 +100,9 @@ export function BlogGrid() {
               <h3 className="line-clamp-2 text-lg font-semibold transition-colors group-hover:text-primary">
                 {post.title}
               </h3>
-              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{post.excerpt}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                {post.excerpt}
+              </p>
 
               {/* Meta */}
               <div className="mt-4 flex flex-wrap gap-3 border-t border-border pt-4 text-xs text-muted-foreground">
@@ -120,5 +129,5 @@ export function BlogGrid() {
         ))}
       </div>
     </section>
-  )
+  );
 }

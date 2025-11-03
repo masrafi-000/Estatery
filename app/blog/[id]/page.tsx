@@ -1,15 +1,17 @@
-"use client"
+"use client";
 
-import { AdSidebar } from "@/components/shared/ads/ad-sidebar"
-import { ArrowLeft, Calendar, Share2, User } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
+import { AdSidebar } from "@/components/shared/ads/ad-sidebar";
+import { ArrowLeft, Calendar, Share2, User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const blogPosts = [
   {
     id: 1,
     title: "10 Tips for First-Time Home Buyers",
-    excerpt: "Learn the essential steps and strategies to make your first home purchase a success.",
+    excerpt:
+      "Learn the essential steps and strategies to make your first home purchase a success.",
     content: `Buying your first home is one of the most significant financial decisions you'll make. Here are 10 essential tips to guide you through the process.
 
 1. Get Pre-Approved for a Mortgage:
@@ -53,7 +55,8 @@ Buying your first home is exciting but requires careful planning. Follow these t
   {
     id: 2,
     title: "The Future of Real Estate Technology",
-    excerpt: "Explore how AI and automation are transforming the real estate industry.",
+    excerpt:
+      "Explore how AI and automation are transforming the real estate industry.",
     content: `Technology is revolutionizing the real estate industry in unprecedented ways. From virtual tours to AI-powered property valuations, the future of real estate is digital.
 
 Virtual Reality Tours:
@@ -88,20 +91,22 @@ The future of real estate is undoubtedly digital. Agents and companies that embr
     date: "Mar 12, 2024",
     readTime: "7 min read",
   },
-]
+];
 
 export default function BlogPostPage({ params }: { params: { id: string } }) {
-  const [shared, setShared] = useState(false)
-  const post = blogPosts.find((p) => p.id === Number.parseInt(params.id))
+  const [shared, setShared] = useState(false);
+  const post = blogPosts.find((p) => p.id === Number.parseInt(params.id));
 
   if (!post) {
     return (
       <main className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-12">
-          <p className="text-center text-muted-foreground">Blog post not found</p>
+          <p className="text-center text-muted-foreground">
+            Blog post not found
+          </p>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -109,7 +114,10 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       {/* Header */}
       <div className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-6">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:gap-3 transition-all"
+          >
             <ArrowLeft className="h-4 w-4" />
             Back to Blog
           </Link>
@@ -122,7 +130,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           <article className="lg:col-span-2">
             {/* Hero Image */}
             <div className="mb-8 overflow-hidden rounded-lg">
-              <img src={post.image || "/placeholder.svg"} alt={post.title} className="h-96 w-full object-cover" />
+              <Image
+                fill
+                src={post.image || "/placeholder.svg"}
+                alt={post.title}
+                className="h-96 w-full object-cover"
+              />
             </div>
 
             {/* Meta Info */}
@@ -147,7 +160,10 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
             {/* Content */}
             <div className="prose prose-invert max-w-none mb-8">
               {post.content.split("\n\n").map((paragraph, idx) => (
-                <p key={idx} className="mb-4 text-foreground leading-relaxed whitespace-pre-wrap">
+                <p
+                  key={idx}
+                  className="mb-4 text-foreground leading-relaxed whitespace-pre-wrap"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -172,5 +188,5 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         </div>
       </div>
     </main>
-  )
+  );
 }

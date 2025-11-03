@@ -15,7 +15,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -31,7 +31,7 @@ interface VerifyAccountFormProps {
 }
 
 export default function VerifyAccountForm({ userId }: VerifyAccountFormProps) {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -105,7 +105,9 @@ export default function VerifyAccountForm({ userId }: VerifyAccountFormProps) {
   const handleVerify = async (otpValue: string) => {
     setIsLoading(true);
     setError("");
-
+    setIsSuccess(false);
+    console.log(otpValue);
+     console.log(userId)
     // try {
     //   const result = await verifyOtpAction({ userId, otp: otpValue });
     //   console.log("OTP Verify Result:", result);

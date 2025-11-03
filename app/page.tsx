@@ -1,4 +1,4 @@
-import { Footer } from "@/components/shared/footer/footer";
+// import { Footer } from "@/components/shared/footer/footer";
 import { BenefitsSection, HeroSection, TestimonialsSection } from "@/components/shared/home";
 import FeaturedProperties from "@/components/shared/properties/featured-properties";
 

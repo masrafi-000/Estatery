@@ -2,6 +2,7 @@
 
 import { AdSidebar } from "@/components/shared/ads/ad-sidebar";
 import { ArrowLeft, Calendar, Eye, Share2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -99,7 +100,8 @@ export default function NewsPostPage({ params }: { params: { id: string } }) {
           <article className="lg:col-span-2">
             {/* Hero Image */}
             <div className="mb-8 overflow-hidden rounded-lg">
-              <img
+              <Image
+              fill
                 src={post.image || "/placeholder.svg"}
                 alt={post.title}
                 className="h-96 w-full object-cover"

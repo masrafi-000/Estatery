@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, Calendar, Heart, Share2 } from "lucide-react"
-import { AdSidebar } from "@/components/shared/ads/ad-sidebar"
+import { AdSidebar } from "@/components/shared/ads/ad-sidebar";
+import { ArrowLeft, Calendar, Heart, Share2 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 const lifestyleItems = [
   {
     id: 1,
     title: "Minimalist Interior Design Trends",
-    excerpt: "Discover how to create a clean, organized living space with minimalist design principles.",
+    excerpt:
+      "Discover how to create a clean, organized living space with minimalist design principles.",
     content: `Minimalism is more than just a design trend—it's a lifestyle choice that can transform your living space and improve your well-being.
 
 Core Principles of Minimalism:
@@ -41,7 +43,8 @@ Minimalism doesn't mean your home has to be cold or impersonal. Add warmth throu
   {
     id: 2,
     title: "Creating Your Dream Home Office",
-    excerpt: "Essential tips and inspiration for designing a productive and comfortable home workspace.",
+    excerpt:
+      "Essential tips and inspiration for designing a productive and comfortable home workspace.",
     content: `With remote work becoming increasingly common, creating an effective home office is essential for productivity and well-being.
 
 Choosing the Right Location:
@@ -78,11 +81,15 @@ A well-designed home office can significantly improve your productivity and job 
     date: "Mar 15, 2024",
     likes: 189,
   },
-]
+];
 
-export default function LifestylePostPage({ params }: { params: { id: string } }) {
-  const [liked, setLiked] = useState(false)
-  const post = lifestyleItems.find((p) => p.id === Number.parseInt(params.id))
+export default function LifestylePostPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const [liked, setLiked] = useState(false);
+  const post = lifestyleItems.find((p) => p.id === Number.parseInt(params.id));
 
   if (!post) {
     return (
@@ -91,7 +98,7 @@ export default function LifestylePostPage({ params }: { params: { id: string } }
           <p className="text-center text-muted-foreground">Story not found</p>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -115,7 +122,12 @@ export default function LifestylePostPage({ params }: { params: { id: string } }
           <article className="lg:col-span-2">
             {/* Hero Image */}
             <div className="mb-8 overflow-hidden rounded-lg">
-              <img src={post.image || "/placeholder.svg"} alt={post.title} className="h-96 w-full object-cover" />
+              <Image
+                fill
+                src={post.image || "/placeholder.svg"}
+                alt={post.title}
+                className="h-96 w-full object-cover"
+              />
             </div>
 
             {/* Meta Info */}
@@ -135,7 +147,10 @@ export default function LifestylePostPage({ params }: { params: { id: string } }
             {/* Content */}
             <div className="prose prose-invert max-w-none mb-8">
               {post.content.split("\n\n").map((paragraph, idx) => (
-                <p key={idx} className="mb-4 text-foreground leading-relaxed whitespace-pre-wrap">
+                <p
+                  key={idx}
+                  className="mb-4 text-foreground leading-relaxed whitespace-pre-wrap"
+                >
                   {paragraph}
                 </p>
               ))}
@@ -147,7 +162,11 @@ export default function LifestylePostPage({ params }: { params: { id: string } }
                 onClick={() => setLiked(!liked)}
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
               >
-                <Heart className={`h-5 w-5 ${liked ? "fill-primary text-primary" : ""}`} />
+                <Heart
+                  className={`h-5 w-5 ${
+                    liked ? "fill-primary text-primary" : ""
+                  }`}
+                />
                 {post.likes + (liked ? 1 : 0)}
               </button>
               <button className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
@@ -164,5 +183,5 @@ export default function LifestylePostPage({ params }: { params: { id: string } }
         </div>
       </div>
     </main>
-  )
+  );
 }

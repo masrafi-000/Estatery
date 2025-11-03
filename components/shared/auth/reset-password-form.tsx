@@ -15,7 +15,7 @@ import {
   Lock,
 } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -38,7 +38,7 @@ const resetPasswordSchema = z
 type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 
 export default function ResetPasswordForm() {
-  const router = useRouter();
+  // const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   const userId = searchParams.get("id");
@@ -75,6 +75,8 @@ export default function ResetPasswordForm() {
 
     setIsLoading(true);
     setError("");
+    setIsSuccess(false);
+    console.log(data);
 
     // Simulate API call
     // try {

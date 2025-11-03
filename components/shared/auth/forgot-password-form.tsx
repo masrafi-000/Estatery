@@ -34,6 +34,7 @@ export default function ForgotPasswordForm() {
 
   const onSubmit = async (data: ForgotPasswordFormData) => {
     setIsLoading(true);
+    setError("");
 
     // try {
     //   const result = await forgotPasswordAction({

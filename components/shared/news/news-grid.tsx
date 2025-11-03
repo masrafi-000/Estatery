@@ -1,13 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, Calendar, Zap } from "lucide-react"
+import { ArrowRight, Calendar, Zap } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const newsItems = [
   {
     id: 1,
     title: "Housing Market Shows Strong Growth in Q1 2024",
-    excerpt: "New data reveals significant increase in property sales and prices across major markets.",
+    excerpt:
+      "New data reveals significant increase in property sales and prices across major markets.",
     image: "/news-1.jpg",
     category: "Market Update",
     date: "Mar 18, 2024",
@@ -16,7 +18,8 @@ const newsItems = [
   {
     id: 2,
     title: "New Regulations Impact Commercial Real Estate",
-    excerpt: "Government announces new zoning laws affecting commercial property development.",
+    excerpt:
+      "Government announces new zoning laws affecting commercial property development.",
     image: "/news-2.jpg",
     category: "Regulations",
     date: "Mar 16, 2024",
@@ -25,7 +28,8 @@ const newsItems = [
   {
     id: 3,
     title: "Tech Giants Invest in Smart Home Technology",
-    excerpt: "Major technology companies announce partnerships to advance smart home solutions.",
+    excerpt:
+      "Major technology companies announce partnerships to advance smart home solutions.",
     image: "/news-3.jpg",
     category: "Technology",
     date: "Mar 14, 2024",
@@ -34,7 +38,8 @@ const newsItems = [
   {
     id: 4,
     title: "Sustainable Building Standards Become Mandatory",
-    excerpt: "New environmental regulations require green building practices in new constructions.",
+    excerpt:
+      "New environmental regulations require green building practices in new constructions.",
     image: "/news-1.jpg",
     category: "Sustainability",
     date: "Mar 12, 2024",
@@ -43,7 +48,8 @@ const newsItems = [
   {
     id: 5,
     title: "Remote Work Reshapes Urban Real Estate",
-    excerpt: "Shift in work patterns continues to influence property demand and location preferences.",
+    excerpt:
+      "Shift in work patterns continues to influence property demand and location preferences.",
     image: "/news-2.jpg",
     category: "Trends",
     date: "Mar 10, 2024",
@@ -52,13 +58,14 @@ const newsItems = [
   {
     id: 6,
     title: "Investment Opportunities in Emerging Markets",
-    excerpt: "Analysts identify promising real estate investment opportunities in developing regions.",
+    excerpt:
+      "Analysts identify promising real estate investment opportunities in developing regions.",
     image: "/news-3.jpg",
     category: "Investment",
     date: "Mar 8, 2024",
     featured: false,
   },
-]
+];
 
 export function NewsGrid() {
   return (
@@ -75,7 +82,8 @@ export function NewsGrid() {
           >
             {/* Image */}
             <div className="relative h-48 overflow-hidden bg-muted">
-              <img
+              <Image
+                fill
                 src={item.image || "/placeholder.svg"}
                 alt={item.title}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -84,7 +92,9 @@ export function NewsGrid() {
               {item.featured && (
                 <div className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-3 py-1">
                   <Zap className="h-3.5 w-3.5 text-primary-foreground" />
-                  <span className="text-xs font-medium text-primary-foreground">Breaking</span>
+                  <span className="text-xs font-medium text-primary-foreground">
+                    Breaking
+                  </span>
                 </div>
               )}
               {!item.featured && (
@@ -99,7 +109,9 @@ export function NewsGrid() {
               <h3 className="line-clamp-2 text-lg font-semibold transition-colors group-hover:text-primary">
                 {item.title}
               </h3>
-              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{item.excerpt}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                {item.excerpt}
+              </p>
 
               {/* Meta */}
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
@@ -107,7 +119,9 @@ export function NewsGrid() {
                   <Calendar className="h-3.5 w-3.5" />
                   {item.date}
                 </div>
-                <span className="text-xs font-medium text-primary">{item.category}</span>
+                <span className="text-xs font-medium text-primary">
+                  {item.category}
+                </span>
               </div>
 
               {/* Read More */}
@@ -123,5 +137,5 @@ export function NewsGrid() {
         ))}
       </div>
     </section>
-  )
+  );
 }

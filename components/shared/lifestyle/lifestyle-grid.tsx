@@ -1,13 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, Calendar, Heart } from "lucide-react"
+import { ArrowRight, Calendar, Heart } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const lifestyleItems = [
   {
     id: 1,
     title: "Minimalist Interior Design Trends",
-    excerpt: "Discover how to create a clean, organized living space with minimalist design principles.",
+    excerpt:
+      "Discover how to create a clean, organized living space with minimalist design principles.",
     image: "/lifestyle-1.jpg",
     category: "Design",
     date: "Mar 17, 2024",
@@ -16,7 +18,8 @@ const lifestyleItems = [
   {
     id: 2,
     title: "Creating Your Dream Home Office",
-    excerpt: "Essential tips and inspiration for designing a productive and comfortable home workspace.",
+    excerpt:
+      "Essential tips and inspiration for designing a productive and comfortable home workspace.",
     image: "/lifestyle-2.jpg",
     category: "Work",
     date: "Mar 15, 2024",
@@ -25,7 +28,8 @@ const lifestyleItems = [
   {
     id: 3,
     title: "Outdoor Living Spaces: Extend Your Home",
-    excerpt: "Transform your backyard into a beautiful outdoor retreat with these design ideas.",
+    excerpt:
+      "Transform your backyard into a beautiful outdoor retreat with these design ideas.",
     image: "/lifestyle-3.jpg",
     category: "Outdoor",
     date: "Mar 13, 2024",
@@ -34,7 +38,8 @@ const lifestyleItems = [
   {
     id: 4,
     title: "Smart Home Automation Guide",
-    excerpt: "Learn how to integrate smart technology into your home for convenience and efficiency.",
+    excerpt:
+      "Learn how to integrate smart technology into your home for convenience and efficiency.",
     image: "/lifestyle-1.jpg",
     category: "Technology",
     date: "Mar 11, 2024",
@@ -43,7 +48,8 @@ const lifestyleItems = [
   {
     id: 5,
     title: "Color Psychology in Home Decor",
-    excerpt: "Understand how colors influence mood and create the perfect ambiance in each room.",
+    excerpt:
+      "Understand how colors influence mood and create the perfect ambiance in each room.",
     image: "/lifestyle-2.jpg",
     category: "Design",
     date: "Mar 9, 2024",
@@ -52,13 +58,14 @@ const lifestyleItems = [
   {
     id: 6,
     title: "Wellness Spaces: Designing for Health",
-    excerpt: "Create dedicated wellness areas in your home for meditation, yoga, and relaxation.",
+    excerpt:
+      "Create dedicated wellness areas in your home for meditation, yoga, and relaxation.",
     image: "/lifestyle-3.jpg",
     category: "Wellness",
     date: "Mar 7, 2024",
     likes: 276,
   },
-]
+];
 
 export function LifestyleGrid() {
   return (
@@ -71,7 +78,8 @@ export function LifestyleGrid() {
           >
             {/* Image */}
             <div className="relative h-48 overflow-hidden bg-muted">
-              <img
+              <Image
+                fill
                 src={item.image || "/placeholder.svg"}
                 alt={item.title}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -87,7 +95,9 @@ export function LifestyleGrid() {
               <h3 className="line-clamp-2 text-lg font-semibold transition-colors group-hover:text-primary">
                 {item.title}
               </h3>
-              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{item.excerpt}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                {item.excerpt}
+              </p>
 
               {/* Meta */}
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
@@ -114,5 +124,5 @@ export function LifestyleGrid() {
         ))}
       </div>
     </section>
-  )
+  );
 }

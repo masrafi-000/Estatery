@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 // import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -32,7 +32,7 @@ interface Verify2FAFormProps {
 }
 
 export default function Verify2FAForm({ userId }: Verify2FAFormProps) {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -67,6 +67,7 @@ export default function Verify2FAForm({ userId }: Verify2FAFormProps) {
     newOtp[index] = value.slice(-1);
     setOtp(newOtp);
     setError("");
+    setIsSuccess(false);
 
     // Auto-focus next input
     if (value && index < 5) {
@@ -106,6 +107,8 @@ export default function Verify2FAForm({ userId }: Verify2FAFormProps) {
   const handleVerify = async (otpValue: string) => {
     setIsLoading(true);
     setError("");
+    console.log(otpValue);
+    console.log(userId);
 
     // try {
     //   const res = await verifyOtpAction({ userId, otp: otpValue });
