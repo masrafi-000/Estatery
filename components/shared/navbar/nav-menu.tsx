@@ -27,7 +27,7 @@ const NavMenu = ({ openNav }: Props) => {
           className="flex items-center gap-2"
         >
           <div className="flex h-10 w-10 justify-center items-center rounded-lg bg-primary">
-            <span className="text-blue-500 text-lg font-bold ">E</span>
+            <span className="text-pink-800 text-xl font-bold ">E</span>
           </div>
           <span className="text-xl font-semibold ">Estatery</span>
         </Link>
