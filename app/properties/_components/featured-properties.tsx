@@ -1,11 +1,10 @@
-
 import { Button } from "@/components/ui/button";
 import { staticProperties } from "@/data";
 import { Property } from "@/types";
 import { EmblaOptionsType } from "embla-carousel";
 import Link from "next/link";
+import Carousel from "../../../components/shared/carousel/carousel";
 import { PropertyCard } from "./propertyCard";
-import Carousel from "../carousel/carousel";
 
 const FeaturedProperties = () => {
   const featuredData: Property[] = staticProperties.slice(0, 9);

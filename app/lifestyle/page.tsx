@@ -1,5 +1,5 @@
-import { LifestyleHero } from "@/components/shared/lifestyle/lifestyle-hero"
-import { LifestyleGrid } from "@/components/shared/lifestyle/lifestyle-grid"
+import { LifestyleHero } from "@/app/lifestyle/_components/lifestyle-hero"
+import { LifestyleGrid } from "@/app/lifestyle/_components/lifestyle-grid"
 import { AdSidebar } from "@/components/shared/ads/ad-sidebar"
 
 export default function LifestylePage() {

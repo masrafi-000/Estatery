@@ -1,6 +1,6 @@
 "use client";
 
-import Verify2FAForm from "@/components/shared/auth/verify-2fa-form";
+import Verify2FAForm from "@/app/auth/_components/verify-2fa-form";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";

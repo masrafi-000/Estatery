@@ -1,8 +1,8 @@
-import { AgentContact } from "@/components/shared/properties/property-agent-contact";
-import PropertyAmenities from "@/components/shared/properties/property-animities";
-import PropertyGallery from "@/components/shared/properties/property-gallery";
-import PropertyInfo from "@/components/shared/properties/property-info";
-import { ViewingRequestForm } from "@/components/shared/properties/property-viwing-req-form";
+import { AgentContact } from "@/app/properties/_components/property-agent-contact";
+import PropertyAmenities from "@/app/properties/_components/property-animities";
+import PropertyGallery from "@/app/properties/_components/property-gallery";
+import PropertyInfo from "@/app/properties/_components/property-info";
+import { ViewingRequestForm } from "@/app/properties/_components/property-viwing-req-form";
 import { staticProperties } from "@/data";
 import { notFound } from "next/navigation";
 

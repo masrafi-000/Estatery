@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { PropertyImage } from "./property/property-card-image";
-import { PropertyStats } from "./property/property-card-stats";
+import { PropertyImage } from "./property-card-image";
+import { PropertyStats } from "./property-card-stats";
 
 interface PropertyCardProps {
   property: Property;

@@ -1,6 +1,6 @@
 "use client";
 
-import ResetPasswordForm from "@/components/shared/auth/reset-password-form";
+import ResetPasswordForm from "@/app/auth/_components/reset-password-form";
 import { Suspense } from "react";
 
 export default function ResetPasswordPage() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import ContactForm from '@/components/shared/contact/contact-form';
-import ContactHero from '@/components/shared/contact/contact-hero';
-import ContactInfo from '@/components/shared/contact/contact-info';
-import { ContactMap } from '@/components/shared/contact/contact-map';
+import ContactForm from '@/app/contact/_components/contact-form';
+import ContactHero from '@/app/contact/_components/contact-hero';
+import ContactInfo from '@/app/contact/_components/contact-info';
+import { ContactMap } from '@/app/contact/_components/contact-map';
 
 const page = () => {
 	return (

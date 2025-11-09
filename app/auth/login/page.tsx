@@ -1,4 +1,4 @@
-import LoginForm from "@/components/shared/auth/login-form";
+import LoginForm from "@/app/auth/_components/login-form";
 import type { Metadata } from "next";
 import Link from "next/link";
 

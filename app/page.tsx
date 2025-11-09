@@ -1,7 +1,10 @@
 // import { Footer } from "@/components/shared/footer/footer";
-import { BenefitsSection, HeroSection, TestimonialsSection } from "@/components/shared/home";
-import FeaturedProperties from "@/components/shared/properties/featured-properties";
-
+import FeaturedProperties from "@/app/properties/_components/featured-properties";
+import {
+  BenefitsSection,
+  HeroSection,
+  TestimonialsSection,
+} from "@/components/shared/home";
 
 export default function page() {
   return (

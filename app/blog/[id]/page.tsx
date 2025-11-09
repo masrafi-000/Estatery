@@ -129,12 +129,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <article className="lg:col-span-2">
             {/* Hero Image */}
-            <div className="mb-8 overflow-hidden rounded-lg">
+            <div className="relative w-full h-[500px] mb-8 overflow-hidden rounded-lg">
               <Image
                 fill
                 src={post.image || "/placeholder.svg"}
                 alt={post.title}
-                className="h-96 w-full object-cover"
+                className=" object-cover"
               />
             </div>
 

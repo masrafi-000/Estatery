@@ -7,9 +7,9 @@ import {
   useSearchAndFilters,
 } from "@/hooks";
 import { Home } from "lucide-react";
-import { FilterSection } from "./property/filter-section";
-import { PaginationControls } from "./property/pagination-control";
-import { PropertyGrid } from "./property/property-grid";
+import { FilterSection } from "./filter-section";
+import { PaginationControls } from "./pagination-control";
+import { PropertyGrid } from "./property-grid";
 
 const ITEMS_PER_PAGE: number = 9;
 

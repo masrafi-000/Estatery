@@ -1,6 +1,6 @@
 "use client";
 
-import ForgotPasswordForm from "@/components/shared/auth/forgot-password-form";
+import ForgotPasswordForm from "@/app/auth/_components/forgot-password-form";
 import { Suspense } from "react";
 
 export default function ForgotPasswordPage() {

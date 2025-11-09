@@ -1,7 +1,7 @@
 // import { staticProperties } from '@/lib/static-data'
 import { Suspense } from "react";
 // import PropertyCard from './components/property-card'
-import AllPropertiesContent from "@/components/shared/properties/all-property-content";
+import AllPropertiesContent from "@/app/properties/_components/all-property-content";
 
 const page = () => {
   return (

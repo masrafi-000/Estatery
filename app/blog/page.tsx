@@ -1,5 +1,5 @@
-import { BlogHero } from "@/components/shared/blog/blog-hero"
-import { BlogGrid } from "@/components/shared/blog/blog-grid"
+import { BlogHero } from "@/app/blog/_components/blog-hero"
+import { BlogGrid } from "@/app/blog/_components/blog-grid"
 import { AdSidebar } from "@/components/shared/ads/ad-sidebar"
 
 export default function BlogPage() {

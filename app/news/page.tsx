@@ -1,6 +1,6 @@
 import { AdSidebar } from "@/components/shared/ads/ad-sidebar";
-import { NewsGrid } from "@/components/shared/news/news-grid";
-import { NewsHero } from "@/components/shared/news/news-hero";
+import { NewsGrid } from "@/app/news/_components/news-grid";
+import { NewsHero } from "@/app/news/_components/news-hero";
 
 export default function NewsPage() {
   return (

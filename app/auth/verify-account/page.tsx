@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import VerifyAccountForm from "@/app/auth/_components/verify-account-form";
 import Link from "next/link";
-import VerifyAccountForm from "@/components/shared/auth/verify-account-form";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
 function VerifyAccountContent() {
   const searchParams = useSearchParams();

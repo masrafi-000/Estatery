@@ -1,7 +1,7 @@
-import ServiceCTA from "@/components/shared/services/service-cta";
-import ServicesHero from "@/components/shared/services/service-hero";
-import { ServicesList } from "@/components/shared/services/service-list";
-import ServiceProcess from "@/components/shared/services/service-process";
+import ServiceCTA from "@/app/services/_components/service-cta";
+import ServicesHero from "@/app/services/_components/service-hero";
+import { ServicesList } from "@/app/services/_components/service-list";
+import ServiceProcess from "@/app/services/_components/service-process";
 
 const page = () => {
   return (
