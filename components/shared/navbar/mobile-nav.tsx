@@ -1,9 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { navButtons, navLinks } from "@/data";
+import {  navLinks } from "@/data";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 type Props = {
@@ -13,6 +13,8 @@ type Props = {
 
 export default function MobileNav({ showNav, closeNav }: Props) {
   const pathname = usePathname();
+
+  const router = useRouter()
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -55,7 +57,7 @@ export default function MobileNav({ showNav, closeNav }: Props) {
         <div className="flex items-center justify-between px-6 pt-6">
           <Link href="/" className="flex items-center gap-2" onClick={closeNav}>
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <span className="text-blue-500 text-lg font-bold">E</span>
+              <span className="text-black text-lg font-bold">E</span>
             </div>
             <span className="text-xl font-semibold">Estatery</span>
           </Link>
@@ -98,27 +100,13 @@ export default function MobileNav({ showNav, closeNav }: Props) {
               {item.label}
             </Link>
           ))}
+          <Button className="w-full cursor-pointer" onClick={() => router.push("/contact")} >
+          Contact Us
+        </Button>
         </nav>
 
-        {/* Footer buttons */}
-        <div className="w-full flex  items-center gap-4 px-8 pb-10">
-          {navButtons.map((btn) => (
-            <Link
-              className="w-full"
-              key={btn.href}
-              href={btn.href}
-              onClick={closeNav}
-            >
-              <Button
-                variant={btn.variant || "default"}
-                size={btn.size || "sm"}
-                className="w-full"
-              >
-                {btn.label}
-              </Button>
-            </Link>
-          ))}
-        </div>
+    
+        
       </aside>
     </>
   );

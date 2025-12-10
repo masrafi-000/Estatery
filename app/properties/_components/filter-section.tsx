@@ -71,17 +71,19 @@ export const FilterSection = ({
           </div>
 
           <div className="flex gap-2">
-            <div className="relative flex-1">
-              <MapPin className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Enter city, address, or property ID..."
-                value={localSearch}
-                onChange={(e) => setLocalSearch(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                className="pl-10"
-              />
+            <div className="relative flex-1 ">
+              <div className="border rounded-full">
+                <MapPin className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder="Enter city, address, or property ID..."
+                  value={localSearch}
+                  onChange={(e) => setLocalSearch(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                  className="pl-10  "
+                />
+              </div>
             </div>
-            <Button onClick={handleSearch} size="lg">
+            <Button onClick={handleSearch}>
               <Search className="mr-2 h-5 w-5" />
               Search
             </Button>
@@ -91,25 +93,30 @@ export const FilterSection = ({
             {selectConfig.map((config) => {
               const Icon = config.icon;
               return (
-                <Select
-                  key={config.key}
-                  value={config.value(filters)}
-                  onValueChange={(value) =>
-                    setFilters(config.onValueChange(value))
-                  }
-                >
-                  <SelectTrigger className="w-full">
-                    <Icon />
-                    <SelectValue placeholder={config.placeholder} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {config.items.map((item) => (
-                      <SelectItem className="text-black" key={item.value} value={item.value}>
-                        {item.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <div key={config.key} className="border rounded-full">
+                  <Select
+                    value={config.value(filters)}
+                    onValueChange={(value) =>
+                      setFilters(config.onValueChange(value))
+                    }
+                  >
+                    <SelectTrigger className="w-full">
+                      <Icon />
+                      <SelectValue placeholder={config.placeholder} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {config.items.map((item) => (
+                        <SelectItem
+                          className="text-black"
+                          key={item.value}
+                          value={item.value}
+                        >
+                          {item.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               );
             })}
           </div>

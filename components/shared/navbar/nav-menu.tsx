@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { navButtons, navLinks } from "@/data";
+import { navLinks } from "@/data";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ThemeToggle from "../theme/theme-toggle";
 
 type Props = { openNav: () => void };
@@ -16,6 +16,8 @@ const NavMenu = ({ openNav }: Props) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  const router = useRouter();
 
   return (
     <header className="border-b bg-background/80 backdrop-blur-sm">
@@ -35,7 +37,7 @@ const NavMenu = ({ openNav }: Props) => {
         {/* Desktop Navbar */}
         <nav
           aria-label="Main Navigation"
-          className="hidden  gap-3 xl:gap-6 md:flex items-center justify-center "
+          className="hidden  gap-3 md:gap-6  md:flex items-center justify-center "
         >
           {navLinks.map((link) => (
             <div key={link.href} className="flex flex-col items-center">
@@ -63,17 +65,13 @@ const NavMenu = ({ openNav }: Props) => {
 
         {/* Right Section */}
         <div className=" flex items-center justify-center gap-2 md:gap-4">
-          {navButtons.map((btn) => (
-            <Link key={btn.label} href={btn.href}>
-              <Button
-                variant={btn.variant || "default"}
-                size={btn.size || "sm"}
-                className="hidden md:inline-flex"
-              >
-                {btn.label}
-              </Button>
-            </Link>
-          ))}
+          <Button
+            className="hidden md:flex cursor-pointer items-center text-base"
+            
+            onClick={() => router.push("/contact")}
+          >
+            Contact Us
+          </Button>
 
           <ThemeToggle />
 

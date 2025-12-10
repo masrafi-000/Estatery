@@ -127,12 +127,14 @@ export function ViewingRequestForm({ propertyId }: ViewingRequestFormProps) {
             {formFields.slice(0, 3).map((field) => (
               <div key={field.id} className="space-y-2">
                 <Label htmlFor={field.id}>{field.label}</Label>
-                <Input
-                  id={field.id}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  {...register(field.id)}
-                />
+                <div className="border rounded-full">
+                  <Input
+                    id={field.id}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    {...register(field.id)}
+                  />
+                </div>
                 {errors[field.id] && (
                   <p className="text-sm text-destructive">
                     {String(errors[field.id]?.message)}
@@ -147,11 +149,13 @@ export function ViewingRequestForm({ propertyId }: ViewingRequestFormProps) {
                 .map((field) => (
                   <div key={field.id} className="space-y-2">
                     <Label htmlFor={field.id}>{field.label}</Label>
-                    <Input
-                      id={field.id}
-                      type={field.type}
-                      {...register(field.id)}
-                    />
+                    <div className="border rounded-full">
+                      <Input
+                        id={field.id}
+                        type={field.type}
+                        {...register(field.id)}
+                      />
+                    </div>
                     {errors.preferredDate && (
                       <p className="text-sm text-destructive">
                         {errors.preferredDate.message}
@@ -171,11 +175,16 @@ export function ViewingRequestForm({ propertyId }: ViewingRequestFormProps) {
                     placeholder={field.placeholder}
                     rows={3}
                     {...register(field.id)}
+                    className="border-"
                   />
                 </div>
               ))}
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              className="w-full cursor-pointer"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? "Submitting..." : "Submit Viewing Request"}
             </Button>
           </form>

@@ -69,7 +69,9 @@ const ContactForm: React.FC = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" placeholder="John Doe" {...register("name")} />
+              
+              <Input className="border-" id="name" placeholder="John Doe" {...register("name")} />
+              
               {errors.name && (
                 <p className="text-sm text-destructive">
                   {errors.name.message}
@@ -81,6 +83,7 @@ const ContactForm: React.FC = () => {
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
+                className="border-"
                   id="email"
                   type="email"
                   placeholder="john@example.com"
@@ -96,6 +99,7 @@ const ContactForm: React.FC = () => {
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number</Label>
                 <Input
+                className="border-"
                   id="phone"
                   type="tel"
                   placeholder="(555) 123-4567"
@@ -115,11 +119,11 @@ const ContactForm: React.FC = () => {
                 name="subject"
                 control={control}
                 render={({ field }) => (
-                  <Select value={field.value} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full">
+                  <Select  value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger className="w-full border-">
                       <SelectValue placeholder="Select a subject" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="">
                       {formSelectSubjects.map((item) => (
                         <SelectItem key={item.label} value={item.value}>
                           {item.label}
@@ -139,6 +143,7 @@ const ContactForm: React.FC = () => {
             <div className="space-y-2">
               <Label htmlFor="message">Message</Label>
               <Textarea
+              className="border-"
                 id="message"
                 placeholder="Tell us how we can help you..."
                 rows={6}
