@@ -38,22 +38,9 @@ export const loginSchema = z.object({
 
 export type LoginFormData = z.infer<typeof loginSchema>;
 
-export type ApiResponse<T = unknown> = {
-  success: boolean;
-  message: string;
-  errors?: { [key: string]: string[] };
-  user?: T;
-  requires2FA?: boolean;
-  requiresVerification?: boolean;
-};
 
-export interface UserJwtPayload {
-  sub: string;
-  email: string;
-  accountType: "USER" | "AGENT";
-  iat: number;
-  exp: number;
-}
+
+
 
 export interface CurrentUserData {
   id: string;
