@@ -191,7 +191,7 @@ export default function BecomeAgentForm() {
           <Link href="/">
             <Button variant="outline">Return Home</Button>
           </Link>
-          <Link href="/login">
+          <Link href="/auth/login">
             <Button>Go to Login</Button>
           </Link>
         </div>
