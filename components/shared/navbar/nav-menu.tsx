@@ -21,7 +21,7 @@ const NavMenu = ({ openNav }: Props) => {
 
   return (
     <header className="border-b bg-background/80 backdrop-blur-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="  flex h-16 items-center justify-between px-4">
         {/* LOGO */}
         <Link
           href="/"
@@ -37,7 +37,7 @@ const NavMenu = ({ openNav }: Props) => {
         {/* Desktop Navbar */}
         <nav
           aria-label="Main Navigation"
-          className="hidden  gap-3 md:gap-6  md:flex items-center justify-center "
+          className="hidden  gap-3 md:gap-5  md:flex items-end justify-end   "
         >
           {navLinks.map((link) => (
             <div key={link.href} className="flex flex-col items-center">

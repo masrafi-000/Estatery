@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {  navLinks } from "@/data";
+import { navLinks } from "@/data";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -14,7 +14,7 @@ type Props = {
 export default function MobileNav({ showNav, closeNav }: Props) {
   const pathname = usePathname();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -85,28 +85,42 @@ export default function MobileNav({ showNav, closeNav }: Props) {
         </div>
 
         {/* Nav links */}
-        <nav className="flex flex-col items-center justify-center gap-6 flex-1 px-8 mt-6">
+        <nav className="flex flex-col items-center justify-center gap-2 flex-1 px-8 mt-6">
           {navLinks.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               onClick={closeNav}
-              className={`w-full h-10 flex items-center justify-center rounded-2xl border transition-colors duration-200 text-base ${
+              className={`w-full h-10 flex items-center justify-center rounded-full border transition-colors duration-200 text-base ${
                 isActive(item.href)
-                  ? "bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 font-medium"
+                  ? "bg-background  border-gray-300 dark:border-gray-700 font-medium"
                   : "border-gray-300 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900"
               }`}
             >
               {item.label}
             </Link>
           ))}
-          <Button className="w-full cursor-pointer" onClick={() => router.push("/contact")} >
-          Contact Us
-        </Button>
+          <Button
+            variant="outline"
+            className="w-full cursor-pointer"
+            onClick={() => {
+              closeNav();
+              router.push("/contact");
+            }}
+          >
+            Contact Us
+          </Button>
+          <Button
+            variant="default"
+            className=" w-full cursor-pointer"
+            onClick={() => {
+              closeNav();
+              router.push("/become-agent");
+            }}
+          >
+            Be Agent
+          </Button>
         </nav>
-
-    
-        
       </aside>
     </>
   );
