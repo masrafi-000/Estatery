@@ -64,13 +64,22 @@ const NavMenu = ({ openNav }: Props) => {
         </nav>
 
         {/* Right Section */}
-        <div className=" flex items-center justify-center gap-2 md:gap-4">
+        <div className=" flex items-center justify-center gap-1 md:gap-4">
           <Button
-            className="hidden md:flex cursor-pointer items-center text-base"
-            
+            size="sm"
+            className="hidden md:flex cursor-pointer items-center text-sm"
+            variant="outline"
             onClick={() => router.push("/contact")}
           >
             Contact Us
+          </Button>
+          <Button
+            variant="default"
+            size="sm"
+            className="hidden md:flex items-center justify-center text-sm cursor-pointer"
+            onClick={() => router.push("/become-agent")}
+          >
+            Be Agent
           </Button>
 
           <ThemeToggle />

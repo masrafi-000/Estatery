@@ -2,7 +2,6 @@
 import { Footer } from "@/components/shared/footer/footer";
 import { Navbar } from "@/components/shared/navbar";
 import { ThemeProvider } from "@/providers/themeProvider";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";

@@ -20,15 +20,15 @@ export default function ThemeToggle() {
   return (
     <Button
       variant="secondary"
-      size="icon"
+      size="icon-sm"
       onClick={handleThemeToggle}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       className="cursor-pointer"
     >
       {theme === "dark" ? (
-        <Sun className="h-5 w-5 transition-all" />
+        <Sun className="h-4 w-4 transition-all" />
       ) : (
-        <Moon className="h-5 w-5 transition-all" />
+        <Moon className="h-4 w-4 transition-all" />
       )}
     </Button>
   );
