@@ -17,8 +17,8 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/admin-login", req.url));
     }
 
-    // Role guard
-    if (session.user.role !== "admin") {
+    // Role guard (normalize to uppercase since role values are stored as 'ADMIN')
+    if ((session.user.role || "").toString().toUpperCase() !== "ADMIN") {
       return NextResponse.redirect(new URL("/unauthorized", req.url));
     }
   }

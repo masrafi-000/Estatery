@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { useRouter } from "next/navigation"
-import { Mail, Lock, Eye, EyeOff, AlertTriangle, Loader2 } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AlertTriangle, Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const adminLoginSchema = z.object({
   email: z
@@ -26,14 +26,15 @@ const adminLoginSchema = z.object({
     .regex(/[a-z]/, "Password must contain at least one lowercase letter")
     .regex(/[0-9]/, "Password must contain at least one number"),
   rememberMe: z.boolean().optional(),
-})
+});
 
-type AdminLoginFormData = z.infer<typeof adminLoginSchema>
+type AdminLoginFormData = z.infer<typeof adminLoginSchema>;
 
 export default function AdminLoginForm() {
-  const router = useRouter()
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     register,
@@ -46,24 +47,36 @@ export default function AdminLoginForm() {
       password: "",
       rememberMe: false,
     },
-  })
+  });
 
   const onSubmit = async (data: AdminLoginFormData) => {
-    setIsLoading(true)
+    setIsLoading(true);
+    setErrorMessage(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const res = await fetch("/api/v1/auth/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ email: data.email, password: data.password }),
+      });
 
-    console.log("[v0] Admin login attempt:", {
-      email: data.email,
-      rememberMe: data.rememberMe,
-    })
+      const body = await res.json();
 
-    // Redirect to admin dashboard
-    router.push("/dashboard/admin")
+      if (!res.ok) {
+        setErrorMessage(body?.error || "Login failed");
+        setIsLoading(false);
+        return;
+      }
 
-    setIsLoading(false)
-  }
+      // Redirect to admin dashboard on success
+      router.push("/dashboard/admin");
+    } catch (err) {
+      setErrorMessage("Network error. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-800">
@@ -77,7 +90,10 @@ export default function AdminLoginForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Email Field */}
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-sm font-medium text-gray-900 dark:text-white">
+          <Label
+            htmlFor="email"
+            className="text-sm font-medium text-gray-900 dark:text-white"
+          >
             Email Address
           </Label>
           <div className="relative">
@@ -93,12 +109,19 @@ export default function AdminLoginForm() {
               disabled={isLoading}
             />
           </div>
-          {errors.email && <p className="text-sm text-red-600 dark:text-red-400">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-sm text-red-600 dark:text-red-400">
+              {errors.email.message}
+            </p>
+          )}
         </div>
 
         {/* Password Field */}
         <div className="space-y-2">
-          <Label htmlFor="password" className="text-sm font-medium text-gray-900 dark:text-white">
+          <Label
+            htmlFor="password"
+            className="text-sm font-medium text-gray-900 dark:text-white"
+          >
             Password
           </Label>
           <div className="relative">
@@ -119,10 +142,18 @@ export default function AdminLoginForm() {
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
               disabled={isLoading}
             >
-              {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              {showPassword ? (
+                <EyeOff className="w-5 h-5" />
+              ) : (
+                <Eye className="w-5 h-5" />
+              )}
             </button>
           </div>
-          {errors.password && <p className="text-sm text-red-600 dark:text-red-400">{errors.password.message}</p>}
+          {errors.password && (
+            <p className="text-sm text-red-600 dark:text-red-400">
+              {errors.password.message}
+            </p>
+          )}
         </div>
 
         {/* Remember Me & Forgot Password */}
@@ -135,7 +166,10 @@ export default function AdminLoginForm() {
               {...register("rememberMe")}
               disabled={isLoading}
             />
-            <label htmlFor="rememberMe" className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="rememberMe"
+              className="ml-2 text-sm text-gray-700 dark:text-gray-300"
+            >
               Keep me signed in
             </label>
           </div>
@@ -163,19 +197,28 @@ export default function AdminLoginForm() {
           )}
         </Button>
 
+        {errorMessage && (
+          <p className="text-sm text-red-600 dark:text-red-400">
+            {errorMessage}
+          </p>
+        )}
+
         {/* Security Notice */}
         <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
           <div className="flex gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-sm font-semibold text-amber-900 dark:text-amber-200 mb-1">Security Notice</h4>
+              <h4 className="text-sm font-semibold text-amber-900 dark:text-amber-200 mb-1">
+                Security Notice
+              </h4>
               <p className="text-sm text-amber-800 dark:text-amber-300">
-                This is a restricted area. All login attempts are monitored and logged.
+                This is a restricted area. All login attempts are monitored and
+                logged.
               </p>
             </div>
           </div>
         </div>
       </form>
     </div>
-  )
+  );
 }

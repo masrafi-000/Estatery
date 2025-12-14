@@ -9,16 +9,15 @@ export async function POST(req: Request) {
 
     const data = ZRegister.parse(body);
 
-  
-
     const user = await auth.api.signUpEmail({
       body: {
         email: data.email,
         password: data.password,
         name: data.name,
         role: data.role || "AGENT",
-        phoneNumber: data.phoneNumber,
-        countryCode: data.countryCode,
+        // `signUpEmail` currently expects core auth fields; additional
+        // profile fields (phoneNumber, countryCode) are stored separately
+        // and will be handled elsewhere if needed.
       },
     });
 

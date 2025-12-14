@@ -21,6 +21,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Ensure the authenticated user is an administrator
+    // `signInEmail` returns an object with a `user` property
+    const role = (user?.user?.role || "").toString().toUpperCase();
+    if (role !== "ADMIN") {
+      return NextResponse.json(
+        { error: "Not authorized as admin" },
+        { status: 403 }
+      );
+    }
+
     return NextResponse.json(
       { message: "Login successful", user },
       { status: 200 }

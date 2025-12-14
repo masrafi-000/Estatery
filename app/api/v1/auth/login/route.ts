@@ -28,13 +28,13 @@ export async function POST(req: Request) {
   } catch (err: any) {
     if (err.name === "ZodError") {
       return NextResponse.json({ error: err.errors }, { status: 400 });
-
-      console.error("Login Error:", err);
-
-      return NextResponse.json(
-        { error: "Internal server error" },
-        { status: 500 }
-      );
     }
+
+    console.error("Login Error:", err);
+
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 }
