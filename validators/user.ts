@@ -15,3 +15,10 @@ export const ZLogin = z.object({
   email: z.email("Email must be valid!"),
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
+
+
+export const ZAdminLogin = z.object({
+email: z.email("Email must be valid!"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+  
+})

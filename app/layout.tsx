@@ -1,4 +1,3 @@
-
 import { Footer } from "@/components/shared/footer/footer";
 import { Navbar } from "@/components/shared/navbar";
 import { ThemeProvider } from "@/providers/themeProvider";
@@ -21,8 +20,6 @@ export const metadata: Metadata = {
   description: "The Estatery is realEstate App.",
 };
 
-;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,18 +30,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

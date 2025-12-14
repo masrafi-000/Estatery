@@ -15,20 +15,7 @@ export const auth = betterAuth({
     additionalFields: {
       role: {
         type: "string",
-        required: false,
-        defaultValue: "AGENT",
-        input: true,
-      },
-      phoneNumber: {
-        type: "string",
-        required: false,
-        defaultValue: 0,
-        input: true,
-      },
-      countryCode: {
-        type: "string",
-        required: false,
-        defaultValue: 880,
+        required: true,
         input: true,
       },
     },

@@ -9,18 +9,7 @@ export async function POST(req: Request) {
 
     const data = ZRegister.parse(body);
 
-    if (
-      !data.name ||
-      !data.email ||
-      !data.password ||
-      !data.phoneNumber ||
-      !data.countryCode
-    ) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
+  
 
     const user = await auth.api.signUpEmail({
       body: {

@@ -1,62 +1,51 @@
 model User {
-  id            String   @id @default(cuid())
-  email         String   @unique
-  name          String?
-  phoneNumber   String?
-  countryCode   String?
-  emailVerified Boolean
-  image         String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  role          Role     @default(AGENT)
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+  role     Role 
 
-  sessions Session[]
-  accounts Account[]
+  agentProfile AgentProfile?
 
-  @@map("user")
+  verifiedAgents AgentProfile[] @relation("AgentVerifiedBy")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model Session {
-  id        String   @id @default(cuid())
-  expiresAt DateTime
-  token     String
-  createdAt DateTime
-  updatedAt DateTime
-  ipAddress String?
-  userAgent String?
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+model AgentProfile {
+  id String @id @default(cuid())
 
-  @@unique([token])
-  @@map("session")
-}
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-model Account {
-  id                    String    @id @default(cuid())
-  accountId             String
-  providerId            String
-  userId                String
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  accessToken           String?
-  refreshToken          String?
-  idToken               String?
-  accessTokenExpiresAt  DateTime?
-  refreshTokenExpiresAt DateTime?
-  scope                 String?
-  password              String?
-  createdAt             DateTime
-  updatedAt             DateTime
+  firstName String
+  lastName  String
+  phone     String @unique
 
-  @@map("account")
-}
+  agencyName    String
+  agencyAddress String
 
-model Verification {
-  id         String    @id @default(cuid())
-  identifier String
-  value      String
-  expiresAt  DateTime
-  createdAt  DateTime?
-  updatedAt  DateTime?
+  licenseNumber   String @unique
+  licenseState    String
+  licenseCopyPath String
+  idProofPath     String
 
-  @@map("verification")
+  profilePhotoPath String?
+
+  bio             String
+  specializations String[]
+  yearsExperience Int
+
+  backgroundCheckConsent Boolean
+  codeOfConductAccepted  Boolean
+  termsAccepted          Boolean
+
+  isVerified Boolean   @default(false)
+  verifiedAt DateTime?
+
+  verifiedById String?
+  verifiedBy   User?   @relation("AgentVerifiedBy", fields: [verifiedById], references: [id])
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
