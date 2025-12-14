@@ -10,6 +10,10 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // Relations required by auth adapters
+  accounts Account[]
+  sessions Session[]
 }
 
 model AgentProfile {
