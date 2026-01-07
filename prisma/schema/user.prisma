@@ -1,55 +1,118 @@
+// --- IDENTITY & AUTHENTICATION ---
+
 model User {
-  id       String @id @default(cuid())
-  email    String @unique
-  password String
-  role     Role 
+  id            String      @id @default(uuid())
+  email         String      @unique
+  password      String?
+  role          Role        @default(USER)
+  status        UserStatus  @default(PENDING)
+  emailVerified DateTime?
+  image         String?
 
-  agentProfile AgentProfile?
+  profile       Profile?
+  agent         Agent?
 
-  verifiedAgents AgentProfile[] @relation("AgentVerifiedBy")
+  accounts      Account[]
+  sessions      Session[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  inquiries     Inquiry[]
 
-  // Relations required by auth adapters
-  accounts Account[]
-  sessions Session[]
+  actorLogs     AuditLog[]  @relation("Actor")
+  targetLogs    AuditLog[]  @relation("Target")
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([email])
+  @@index([role, status])
 }
 
-model AgentProfile {
-  id String @id @default(cuid())
+model Account {
+  id                String   @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.Text
+  access_token      String?  @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+model Session {
+  id           String   @id @default(uuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+
+model Profile {
+  id         String  @id @default(uuid())
+  userId     String  @unique
+  fullName   String
+  phone      String?
+  address    String?
+  bio        String? @db.Text
+  website    String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model Agent {
+  id          String    @id @default(uuid())
+  userId      String    @unique
+  agencyName  String?
+  licenseNo   String?
+  verifiedAt  DateTime?
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  properties  Property[]
+}
+
+// --- SUPERADMIN / AUDIT ---
+
+model Inquiry {
+  id          String   @id @default(uuid())
+  message     String   @db.Text
+
+  userId      String
+  propertyId  String
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 
-  firstName String
-  lastName  String
-  phone     String @unique
+  @@index([userId])
+  @@index([propertyId])
+}
 
-  agencyName    String
-  agencyAddress String
 
-  licenseNumber   String @unique
-  licenseState    String
-  licenseCopyPath String
-  idProofPath     String
+model AuditLog {
+  id        String   @id @default(uuid())
+  action    String
+  actorId   String
+  targetId  String?
+  details   Json?
 
-  profilePhotoPath String?
+  actor  User  @relation("Actor", fields: [actorId], references: [id], onDelete: Restrict)
+  target User? @relation("Target", fields: [targetId], references: [id], onDelete: SetNull)
 
-  bio             String
-  specializations String[]
-  yearsExperience Int
+  createdAt DateTime @default(now())
 
-  backgroundCheckConsent Boolean
-  codeOfConductAccepted  Boolean
-  termsAccepted          Boolean
-
-  isVerified Boolean   @default(false)
-  verifiedAt DateTime?
-
-  verifiedById String?
-  verifiedBy   User?   @relation("AgentVerifiedBy", fields: [verifiedById], references: [id])
-
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([actorId])
+  @@index([targetId])
 }

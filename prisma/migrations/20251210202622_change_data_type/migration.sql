@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "user" ALTER COLUMN "countryCode" SET DATA TYPE TEXT,
-ALTER COLUMN "phoneNumber" SET DATA TYPE TEXT;

@@ -1,4 +1,27 @@
 enum Role {
+  SUPER_ADMIN
   ADMIN
   AGENT
+  USER
+}
+
+enum UserStatus {
+  PENDING   
+  APPROVED 
+  REJECTED 
+  BLOCKED   
+}
+
+enum PropertyType {
+  BUY
+  RENT
+}
+
+enum PropertyStatus {
+  DRAFT
+  PENDING
+  AVAILABLE
+  SOLD
+  RENTED
+  HIDDEN
 }
